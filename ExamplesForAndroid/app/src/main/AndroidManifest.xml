@@ -24,7 +24,8 @@
         <!-- 列子列表界面 -->
         <activity android:name=".ui.examples.ExamplesActivity" />
         <activity android:name=".ui.operators.operator.CreateOperatorActivity" />
-        <activity android:name=".ui.operators.operator.JustOperatorActivity"></activity>
+        <activity android:name=".ui.operators.operator.JustOperatorActivity"/>
+        <activity android:name=".ui.operators.operator.MapOperatorActivity"/>
     </application>
 
 </manifest>

@@ -2,7 +2,6 @@ package com.dingmouren.examplesforandroid.ui.operators.operator;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -13,17 +12,20 @@ import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
-public class JustOperatorActivity extends BaseOperatorActivity {
+/**
+ * @author dingmouren
+ */
+public class MapOperatorActivity extends BaseOperatorActivity {
 
     public static final String KEY = "key";
 
     private OperatorModel mBean;
 
     public static void newInstance(Context context, OperatorModel bean){
-        Intent intent = new Intent(context,JustOperatorActivity.class);
+        Intent intent = new Intent(context,MapOperatorActivity.class);
         intent.putExtra(KEY,bean);
         context.startActivity(intent);
     }
@@ -44,33 +46,43 @@ public class JustOperatorActivity extends BaseOperatorActivity {
     @Override
     protected void test() {
         mTvLog.append("\n\n");
+
         Observable.just(1,2,3)
+                .map(new Function<Integer, String>() {
+                    @Override
+                    public String apply(Integer integer) throws Exception {
+                        mTvLog.append("map函数处理传递过来的数字\n");
+                        //函数处理事件
+                        String strResult = "数字变大2倍后："+integer * 2;
+
+                        return strResult;
+                    }
+                })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Integer>() {
+                .subscribe(new Observer<String>() {
                     Disposable mDisposable;
                     @Override
-                    public void onSubscribe(Disposable disposable) {
-                        mDisposable = disposable;
-                        mTvLog.append("onSubscribe   获取到Disposable实例\n");
+                    public void onSubscribe(Disposable d) {
+                        mDisposable = d;
+                        mTvLog.append("onSubscribe 获取到Disposable实例 线程："+Thread.currentThread().getName()+"\n");
                     }
 
                     @Override
-                    public void onNext(Integer integer) {
-                        mTvLog.append("onNext -- "+integer+"\n");
+                    public void onNext(String s) {
+                        mTvLog.append("onNext : "+s +"  线程:"+Thread.currentThread().getName()+"\n");
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        mTvLog.append("onError\n");
+                        mTvLog.append("onError   线程:"+Thread.currentThread().getName()+"\n");
                     }
 
                     @Override
                     public void onComplete() {
-                        mTvLog.append("onComplete\n");
+                        mTvLog.append("onComplete   线程:"+Thread.currentThread().getName()+"\n");
                         Log.e(mActivity.getClass().getSimpleName(),mTvLog.getText().toString());
                     }
                 });
-
     }
 }
