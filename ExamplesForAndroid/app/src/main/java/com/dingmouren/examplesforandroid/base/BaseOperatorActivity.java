@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.dingmouren.examplesforandroid.R;
@@ -13,10 +14,12 @@ import com.dingmouren.examplesforandroid.R;
  */
 public abstract class BaseOperatorActivity extends BaseActivity {
 
+
     protected TextView mTvOperatorName;
     protected ImageView mImgBack;
     protected TextView mTvLog;
     protected Button mBtnTest;
+    protected ScrollView mScrollView;
 
     @Override
     public int getLayoutId() {
@@ -29,6 +32,7 @@ public abstract class BaseOperatorActivity extends BaseActivity {
         mImgBack = findViewById(R.id.img_back);
         mTvLog = findViewById(R.id.tv_log);
         mBtnTest = findViewById(R.id.btn_test);
+        mScrollView = findViewById(R.id.scroll_view);
     }
 
     @Override

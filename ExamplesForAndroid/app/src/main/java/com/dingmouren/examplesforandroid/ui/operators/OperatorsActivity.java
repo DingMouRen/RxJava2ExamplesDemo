@@ -12,6 +12,7 @@ import com.dingmouren.examplesforandroid.base.BaseActivity;
 import com.dingmouren.examplesforandroid.R;
 import com.dingmouren.examplesforandroid.model.OperatorModel;
 import com.dingmouren.examplesforandroid.ui.operators.operator.CreateOperatorActivity;
+import com.dingmouren.examplesforandroid.ui.operators.operator.JustOperatorActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -103,6 +104,7 @@ public class OperatorsActivity extends BaseActivity implements OperatorsAdapter.
                 CreateOperatorActivity.newInstance(mActivity,model);
                 break;
             case R.string.rx_just:
+                JustOperatorActivity.newInstance(mActivity,model);
                 break;
             case R.string.rx_map:
                 break;
