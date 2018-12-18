@@ -3,12 +3,12 @@
     package="com.dingmouren.examplesforandroid">
 
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".MyApplication"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.MainActivity">
             <intent-filter>
@@ -18,12 +18,12 @@
             </intent-filter>
         </activity>
 
-        <!--操作符列表界面-->
-        <activity android:name=".ui.operators.OperatorsActivity"/>
+        <!-- 操作符列表界面 -->
+        <activity android:name=".ui.operators.OperatorsActivity" />
 
-        <!--列子列表界面-->
-        <activity android:name=".ui.examples.ExamplesActivity"/>
-
+        <!-- 列子列表界面 -->
+        <activity android:name=".ui.examples.ExamplesActivity" />
+        <activity android:name=".ui.operators.operator.CreateOperatorActivity"></activity>
     </application>
 
 </manifest>
