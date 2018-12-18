@@ -20,12 +20,14 @@
 
         <!-- 操作符列表界面 -->
         <activity android:name=".ui.operators.OperatorsActivity" />
-
-        <!-- 列子列表界面 -->
-        <activity android:name=".ui.examples.ExamplesActivity" />
         <activity android:name=".ui.operators.operator.CreateOperatorActivity" />
         <activity android:name=".ui.operators.operator.JustOperatorActivity"/>
         <activity android:name=".ui.operators.operator.MapOperatorActivity"/>
+        <activity android:name=".ui.operators.operator.ZipOperatorActivity"/>
+
+        <!-- 例子列表界面 -->
+        <activity android:name=".ui.examples.ExamplesActivity" />
+
     </application>
 
 </manifest>
