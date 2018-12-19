@@ -3,12 +3,12 @@
     package="com.dingmouren.examplesforandroid">
 
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".MyApplication"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.MainActivity">
             <intent-filter>
@@ -18,11 +18,22 @@
             </intent-filter>
         </activity>
 
-        <!--操作符列表界面-->
-        <activity android:name=".ui.operators.OperatorsActivity"/>
-
-        <!--列子列表界面-->
-        <activity android:name=".ui.examples.ExamplesActivity"/>
+        <!-- 操作符列表界面 -->
+        <activity android:name=".ui.operators.OperatorsActivity" />
+        <activity android:name=".ui.operators.operator.CreateOperatorActivity" />
+        <activity android:name=".ui.operators.operator.JustOperatorActivity"/>
+        <activity android:name=".ui.operators.operator.MapOperatorActivity"/>
+        <activity android:name=".ui.operators.operator.ZipOperatorActivity"/>
+        <activity android:name=".ui.operators.operator.FlatMapOperatorActivity"/>
+        <activity android:name=".ui.operators.operator.ConcatMapOperatorActivity"/>
+        <activity android:name=".ui.operators.operator.FilterOperatorActivity"/>
+        <activity android:name=".ui.operators.operator.TakeOperatorActivity"/>
+        <activity android:name=".ui.operators.operator.DoOnNextOperatorActivity"/>
+        <activity android:name=".ui.operators.operator.TimerOperatorActivity"/>
+        <activity android:name=".ui.operators.operator.IntervalOperatorActivity"/>
+        <activity android:name=".ui.operators.operator.SingleActivity"/>
+        <!-- 例子列表界面 -->
+        <activity android:name=".ui.examples.ExamplesActivity" />
 
     </application>
 

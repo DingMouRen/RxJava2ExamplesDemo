@@ -24,8 +24,6 @@
     <string name="rx_timer_desc">在Rxjava中timer 操作符既可以延迟执行一段逻辑，也可以间隔执行一段逻辑,但在RxJava 2.x已经过时了，现在用interval操作符来间隔执行，timer和interval都默认执行在一个新线程上</string>
     <string name="rx_interval">interval</string>
     <string name="rx_interval_desc">间隔执行操作，默认在新线程</string>
-    <string name="rx_single">single</string>
-    <string name="rx_single_desc">Single只会接收一个参数,而SingleObserver只会调用onError或者onSuccess</string>
     <string name="rx_skip">skip</string>
     <string name="rx_skip_desc">接受一个long型参数，代表跳过多少个数目的事件再开始接收</string>
     <string name="rx_concat">concat</string>
@@ -54,8 +52,12 @@
     <string name="rx_AsyncSubject_desc">在调用 onComplete() 之前，除了 subscribe() 其它的操作都会被缓存，在调用 onComplete() 之后只有最后一个 onNext() 会生效</string>
     <string name="rx_BehaviorSubject">BehaviorSubject</string>
     <string name="rx_BehaviorSubject_desc">BehaviorSubject 的最后一次 onNext() 操作会被缓存，然后在 subscribe() 后立刻推给新注册的 Observer</string>
+    <string name="rx_single">Single</string>
+    <string name="rx_single_desc">Single只会接收一个参数,而SingleObserver只会调用onError或者onSuccess.只发射一条单一的数据，或者一条异常通知。</string>
     <string name="rx_Completable">Completable</string>
     <string name="rx_Completable_desc">只关心结果，也就是说 Completable 是没有 onNext 的，要么成功要么出错，不关心过程，在 subscribe 后的某个时间点返回结果</string>
+    <string name="rx_MayBe">Maybe</string>
+    <string name="rx_MayBe_desc">可发射一条单一的数据，以及发射一条完成通知，或者一条异常通知，其中完成通知和异常通知只能发射一个，发射数据只能在发射完成通知或者异常通知之前，否则发射数据无效</string>
     <string name="rx_Flowable">Flowable</string>
     <string name="rx_Flowable_desc">专用于解决背压问题</string>
 

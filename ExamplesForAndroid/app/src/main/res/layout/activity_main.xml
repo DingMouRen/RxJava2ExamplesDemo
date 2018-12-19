@@ -14,17 +14,23 @@
         />
     <Button
         android:id="@+id/btn_operator"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_above="@+id/line"
         android:background="@drawable/btn_bg"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:text="操作符"
         />
     <Button
         android:id="@+id/btn_example"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_below="@+id/line"
         android:background="@drawable/btn_bg"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="例子"
         />
 
 </RelativeLayout>
