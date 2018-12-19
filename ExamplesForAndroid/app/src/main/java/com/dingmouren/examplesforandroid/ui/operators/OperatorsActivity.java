@@ -6,15 +6,20 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Filter;
 import android.widget.ImageView;
 
 import com.dingmouren.examplesforandroid.base.BaseActivity;
 import com.dingmouren.examplesforandroid.R;
 import com.dingmouren.examplesforandroid.model.OperatorModel;
+import com.dingmouren.examplesforandroid.ui.operators.operator.ConcatMapOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.CreateOperatorActivity;
+import com.dingmouren.examplesforandroid.ui.operators.operator.DoOnNextOperatorActivity;
+import com.dingmouren.examplesforandroid.ui.operators.operator.FilterOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.FlatMapOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.JustOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.MapOperatorActivity;
+import com.dingmouren.examplesforandroid.ui.operators.operator.TakeOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.ZipOperatorActivity;
 
 import java.util.ArrayList;
@@ -119,12 +124,16 @@ public class OperatorsActivity extends BaseActivity implements OperatorsAdapter.
                 FlatMapOperatorActivity.newInstance(mActivity,model);
                 break;
             case R.string.rx_concatMap:
+                ConcatMapOperatorActivity.newInstance(mActivity,model);
                 break;
             case R.string.rx_filter:
+                FilterOperatorActivity.newInstance(mActivity,model);
                 break;
             case R.string.rx_take:
+                TakeOperatorActivity.newInstance(mActivity,model);
                 break;
             case R.string.rx_doOnNext:
+                DoOnNextOperatorActivity.newInstance(mActivity,model);
                 break;
             case R.string.rx_timer:
                 break;

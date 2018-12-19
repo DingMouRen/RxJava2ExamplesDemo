@@ -25,6 +25,10 @@
         <activity android:name=".ui.operators.operator.MapOperatorActivity"/>
         <activity android:name=".ui.operators.operator.ZipOperatorActivity"/>
         <activity android:name=".ui.operators.operator.FlatMapOperatorActivity"/>
+        <activity android:name=".ui.operators.operator.ConcatMapOperatorActivity"/>
+        <activity android:name=".ui.operators.operator.FilterOperatorActivity"/>
+        <activity android:name=".ui.operators.operator.TakeOperatorActivity"/>
+        <activity android:name=".ui.operators.operator.DoOnNextOperatorActivity"/>
         <!-- 例子列表界面 -->
         <activity android:name=".ui.examples.ExamplesActivity" />
 
