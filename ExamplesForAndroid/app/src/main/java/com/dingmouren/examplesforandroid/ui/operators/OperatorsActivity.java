@@ -12,8 +12,10 @@ import com.dingmouren.examplesforandroid.base.BaseActivity;
 import com.dingmouren.examplesforandroid.R;
 import com.dingmouren.examplesforandroid.model.OperatorModel;
 import com.dingmouren.examplesforandroid.ui.operators.operator.CreateOperatorActivity;
+import com.dingmouren.examplesforandroid.ui.operators.operator.FlatMapOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.JustOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.MapOperatorActivity;
+import com.dingmouren.examplesforandroid.ui.operators.operator.ZipOperatorActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -111,8 +113,10 @@ public class OperatorsActivity extends BaseActivity implements OperatorsAdapter.
                 MapOperatorActivity.newInstance(mActivity,model);
                 break;
             case R.string.rx_zip:
+                ZipOperatorActivity.newInstance(mActivity,model);
                 break;
             case R.string.rx_flatMap:
+                FlatMapOperatorActivity.newInstance(mActivity,model);
                 break;
             case R.string.rx_concatMap:
                 break;

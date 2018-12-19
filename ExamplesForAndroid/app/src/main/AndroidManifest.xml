@@ -24,7 +24,7 @@
         <activity android:name=".ui.operators.operator.JustOperatorActivity"/>
         <activity android:name=".ui.operators.operator.MapOperatorActivity"/>
         <activity android:name=".ui.operators.operator.ZipOperatorActivity"/>
-
+        <activity android:name=".ui.operators.operator.FlatMapOperatorActivity"/>
         <!-- 例子列表界面 -->
         <activity android:name=".ui.examples.ExamplesActivity" />
 
