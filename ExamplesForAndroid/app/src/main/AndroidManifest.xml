@@ -31,6 +31,7 @@
         <activity android:name=".ui.operators.operator.DoOnNextOperatorActivity"/>
         <activity android:name=".ui.operators.operator.TimerOperatorActivity"/>
         <activity android:name=".ui.operators.operator.IntervalOperatorActivity"/>
+        <activity android:name=".ui.operators.operator.SingleActivity"/>
         <!-- 例子列表界面 -->
         <activity android:name=".ui.examples.ExamplesActivity" />
 

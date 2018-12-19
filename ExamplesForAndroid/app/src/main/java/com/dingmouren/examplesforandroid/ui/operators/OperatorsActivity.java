@@ -20,6 +20,7 @@ import com.dingmouren.examplesforandroid.ui.operators.operator.FlatMapOperatorAc
 import com.dingmouren.examplesforandroid.ui.operators.operator.IntervalOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.JustOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.MapOperatorActivity;
+import com.dingmouren.examplesforandroid.ui.operators.operator.SingleActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.TakeOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.TimerOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.ZipOperatorActivity;
@@ -88,7 +89,6 @@ public class OperatorsActivity extends BaseActivity implements OperatorsAdapter.
         mOperatorsList.add(new OperatorModel(this,R.string.rx_doOnNext,R.string.rx_doOnNext_desc));
         mOperatorsList.add(new OperatorModel(this,R.string.rx_timer,R.string.rx_timer_desc));
         mOperatorsList.add(new OperatorModel(this,R.string.rx_interval,R.string.rx_interval_desc));
-        mOperatorsList.add(new OperatorModel(this,R.string.rx_single,R.string.rx_single_desc));
         mOperatorsList.add(new OperatorModel(this,R.string.rx_skip,R.string.rx_skip_desc));
         mOperatorsList.add(new OperatorModel(this,R.string.rx_concat,R.string.rx_concat_desc));
         mOperatorsList.add(new OperatorModel(this,R.string.rx_distinct,R.string.rx_distinct_desc));
@@ -103,7 +103,9 @@ public class OperatorsActivity extends BaseActivity implements OperatorsAdapter.
         mOperatorsList.add(new OperatorModel(this,R.string.rx_PublishSubject,R.string.rx_PublishSubject_desc));
         mOperatorsList.add(new OperatorModel(this,R.string.rx_AsyncSubject,R.string.rx_AsyncSubject_desc));
         mOperatorsList.add(new OperatorModel(this,R.string.rx_BehaviorSubject,R.string.rx_BehaviorSubject_desc));
+        mOperatorsList.add(new OperatorModel(this,R.string.rx_single,R.string.rx_single_desc));
         mOperatorsList.add(new OperatorModel(this,R.string.rx_Completable,R.string.rx_Completable_desc));
+        mOperatorsList.add(new OperatorModel(this,R.string.rx_MayBe,R.string.rx_MayBe_desc));
         mOperatorsList.add(new OperatorModel(this,R.string.rx_Flowable,R.string.rx_Flowable_desc));
     }
 
@@ -143,8 +145,6 @@ public class OperatorsActivity extends BaseActivity implements OperatorsAdapter.
             case R.string.rx_interval:
                 IntervalOperatorActivity.newInstance(mActivity,model);
                 break;
-            case R.string.rx_single:
-                break;
             case R.string.rx_skip:
                 break;
             case R.string.rx_concat:
@@ -173,7 +173,12 @@ public class OperatorsActivity extends BaseActivity implements OperatorsAdapter.
                 break;
             case R.string.rx_BehaviorSubject:
                 break;
+            case R.string.rx_single:
+                SingleActivity.newInstance(mActivity,model);
+                break;
             case R.string.rx_Completable:
+                break;
+            case R.string.rx_MayBe:
                 break;
             case R.string.rx_Flowable:
                 break;
