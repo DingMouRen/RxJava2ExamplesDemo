@@ -20,6 +20,7 @@ import com.dingmouren.examplesforandroid.ui.operators.operator.FlatMapOperatorAc
 import com.dingmouren.examplesforandroid.ui.operators.operator.JustOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.MapOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.TakeOperatorActivity;
+import com.dingmouren.examplesforandroid.ui.operators.operator.TimerOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.ZipOperatorActivity;
 
 import java.util.ArrayList;
@@ -136,6 +137,7 @@ public class OperatorsActivity extends BaseActivity implements OperatorsAdapter.
                 DoOnNextOperatorActivity.newInstance(mActivity,model);
                 break;
             case R.string.rx_timer:
+                TimerOperatorActivity.newInstance(mActivity,model);
                 break;
             case R.string.rx_interval:
                 break;

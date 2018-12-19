@@ -29,6 +29,7 @@
         <activity android:name=".ui.operators.operator.FilterOperatorActivity"/>
         <activity android:name=".ui.operators.operator.TakeOperatorActivity"/>
         <activity android:name=".ui.operators.operator.DoOnNextOperatorActivity"/>
+        <activity android:name=".ui.operators.operator.TimerOperatorActivity"/>
         <!-- 例子列表界面 -->
         <activity android:name=".ui.examples.ExamplesActivity" />
 
