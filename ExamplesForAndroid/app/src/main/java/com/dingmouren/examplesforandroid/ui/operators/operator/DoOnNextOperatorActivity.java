@@ -46,11 +46,12 @@ public class DoOnNextOperatorActivity extends BaseOperatorActivity {
     protected void test() {
         mTvLog.append("\n\n");
 
-        Observable.just(1,2,3)
+        mTvLog.append("Observable 发射 1\n");
+        Observable.just(1)
                 .doOnNext(new Consumer<Integer>() {
                     @Override
                     public void accept(Integer integer) throws Exception {
-                        mTvLog.append("保存数据 线程："+Thread.currentThread().getName()+"\n");
+                        mTvLog.append("doOnNext 无返回值 在此保存数据 线程："+Thread.currentThread().getName()+"\n");
                     }
                 }).subscribe(new Observer<Integer>() {
             @Override
@@ -65,12 +66,12 @@ public class DoOnNextOperatorActivity extends BaseOperatorActivity {
 
             @Override
             public void onError(Throwable e) {
-                mTvLog.append("onError");
+                mTvLog.append("onError\n");
             }
 
             @Override
             public void onComplete() {
-                mTvLog.append("onComplete");
+                mTvLog.append("onComplete\n");
                 Log.i(mActivity.getClass().getSimpleName(),mTvLog.getText().toString());
             }
         });
