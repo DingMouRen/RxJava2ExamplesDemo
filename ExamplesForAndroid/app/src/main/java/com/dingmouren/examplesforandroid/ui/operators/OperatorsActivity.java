@@ -17,6 +17,7 @@ import com.dingmouren.examplesforandroid.ui.operators.operator.CreateOperatorAct
 import com.dingmouren.examplesforandroid.ui.operators.operator.DoOnNextOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.FilterOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.FlatMapOperatorActivity;
+import com.dingmouren.examplesforandroid.ui.operators.operator.IntervalOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.JustOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.MapOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.TakeOperatorActivity;
@@ -140,6 +141,7 @@ public class OperatorsActivity extends BaseActivity implements OperatorsAdapter.
                 TimerOperatorActivity.newInstance(mActivity,model);
                 break;
             case R.string.rx_interval:
+                IntervalOperatorActivity.newInstance(mActivity,model);
                 break;
             case R.string.rx_single:
                 break;
