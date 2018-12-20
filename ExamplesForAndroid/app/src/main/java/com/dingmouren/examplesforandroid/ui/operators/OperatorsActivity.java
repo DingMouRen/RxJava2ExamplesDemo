@@ -12,16 +12,20 @@ import android.widget.ImageView;
 import com.dingmouren.examplesforandroid.base.BaseActivity;
 import com.dingmouren.examplesforandroid.R;
 import com.dingmouren.examplesforandroid.model.OperatorModel;
+import com.dingmouren.examplesforandroid.ui.operators.operator.BufferOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.CompletableOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.ConcatMapOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.ConcatOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.CreateOperatorActivity;
+import com.dingmouren.examplesforandroid.ui.operators.operator.DebounceOperatorActivity;
+import com.dingmouren.examplesforandroid.ui.operators.operator.DeferOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.DistinctOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.DoOnNextOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.FilterOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.FlatMapOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.IntervalOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.JustOperatorActivity;
+import com.dingmouren.examplesforandroid.ui.operators.operator.LastOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.MapOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.MayBeOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.SingleActivity;
@@ -160,12 +164,16 @@ public class OperatorsActivity extends BaseActivity implements OperatorsAdapter.
                 DistinctOperatorActivity.newInstance(mActivity,model);
                 break;
             case R.string.rx_buffer:
+                BufferOperatorActivity.newInstance(mActivity,model);
                 break;
             case R.string.rx_debounce:
+                DebounceOperatorActivity.newInstance(mActivity,model);
                 break;
             case R.string.rx_defer:
+                DeferOperatorActivity.newInstance(mActivity,model);
                 break;
             case R.string.rx_last:
+                LastOperatorActivity.newInstance(mActivity,model);
                 break;
             case R.string.rx_merge:
                 break;

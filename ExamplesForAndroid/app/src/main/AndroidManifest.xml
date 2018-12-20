@@ -37,6 +37,10 @@
         <activity android:name=".ui.operators.operator.SkipOperatorActivity"/>
         <activity android:name=".ui.operators.operator.ConcatOperatorActivity"/>
         <activity android:name=".ui.operators.operator.DistinctOperatorActivity"/>
+        <activity android:name=".ui.operators.operator.BufferOperatorActivity"/>
+        <activity android:name=".ui.operators.operator.DebounceOperatorActivity"/>
+        <activity android:name=".ui.operators.operator.DeferOperatorActivity"/>
+        <activity android:name=".ui.operators.operator.LastOperatorActivity"/>
         <!-- 例子列表界面 -->
         <activity android:name=".ui.examples.ExamplesActivity" />
 
