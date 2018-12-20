@@ -25,6 +25,7 @@ import com.dingmouren.examplesforandroid.ui.operators.operator.DistinctOperatorA
 import com.dingmouren.examplesforandroid.ui.operators.operator.DoOnNextOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.FilterOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.FlatMapOperatorActivity;
+import com.dingmouren.examplesforandroid.ui.operators.operator.FlowableActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.IntervalOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.JustOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.LastOperatorActivity;
@@ -204,6 +205,7 @@ public class OperatorsActivity extends BaseActivity implements OperatorsAdapter.
                 BehaviorSubjectActivity.newInstance(mActivity,model);
                 break;
             case R.string.rx_Flowable:
+                FlowableActivity.newInstance(mActivity,model);
                 break;
             case R.string.rx_single:
                 SingleActivity.newInstance(mActivity,model);

@@ -48,6 +48,7 @@
         <activity android:name=".ui.operators.operator.PublishSubjectActivity"/>
         <activity android:name=".ui.operators.operator.AsyncSubjectActivity"/>
         <activity android:name=".ui.operators.operator.BehaviorSubjectActivity"/>
+        <activity android:name=".ui.operators.operator.FlowableActivity"/>
         <!-- 例子列表界面 -->
         <activity android:name=".ui.examples.ExamplesActivity" />
 
