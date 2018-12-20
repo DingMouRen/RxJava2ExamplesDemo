@@ -29,11 +29,14 @@ import com.dingmouren.examplesforandroid.ui.operators.operator.LastOperatorActiv
 import com.dingmouren.examplesforandroid.ui.operators.operator.MapOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.MayBeOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.MergeOperatorActivity;
+import com.dingmouren.examplesforandroid.ui.operators.operator.PublishSubjectActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.ReduceOperatorActivity;
+import com.dingmouren.examplesforandroid.ui.operators.operator.ScanOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.SingleActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.SkipOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.TakeOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.TimerOperatorActivity;
+import com.dingmouren.examplesforandroid.ui.operators.operator.WindowOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.ZipOperatorActivity;
 
 import java.util.ArrayList;
@@ -184,14 +187,19 @@ public class OperatorsActivity extends BaseActivity implements OperatorsAdapter.
                 ReduceOperatorActivity.newInstance(mActivity,model);
                 break;
             case R.string.rx_scan:
+                ScanOperatorActivity.newInstance(mActivity,model);
                 break;
             case R.string.rx_window:
+                WindowOperatorActivity.newInstance(mActivity,model);
                 break;
             case R.string.rx_PublishSubject:
+                PublishSubjectActivity.newInstance(mActivity,model);
                 break;
             case R.string.rx_AsyncSubject:
                 break;
             case R.string.rx_BehaviorSubject:
+                break;
+            case R.string.rx_Flowable:
                 break;
             case R.string.rx_single:
                 SingleActivity.newInstance(mActivity,model);
@@ -202,8 +210,7 @@ public class OperatorsActivity extends BaseActivity implements OperatorsAdapter.
             case R.string.rx_MayBe:
                 MayBeOperatorActivity.newInstance(mActivity,model);
                 break;
-            case R.string.rx_Flowable:
-                break;
+
         }
     }
 }

@@ -8,22 +8,21 @@ import android.util.Log;
 import com.dingmouren.examplesforandroid.base.BaseOperatorActivity;
 import com.dingmouren.examplesforandroid.model.OperatorModel;
 
-import io.reactivex.MaybeObserver;
 import io.reactivex.Observable;
+import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.BiFunction;
 
 /**
  * @author dingmouren
  */
-public class ReduceOperatorActivity extends BaseOperatorActivity {
+public class WindowOperatorActivity extends BaseOperatorActivity {
 
     public static final String KEY = "key";
 
     private OperatorModel mBean;
 
     public static void newInstance(Context context, OperatorModel bean){
-        Intent intent = new Intent(context,ReduceOperatorActivity.class);
+        Intent intent = new Intent(context,WindowOperatorActivity.class);
         intent.putExtra(KEY,bean);
         context.startActivity(intent);
     }
@@ -47,24 +46,18 @@ public class ReduceOperatorActivity extends BaseOperatorActivity {
     protected void test() {
         mTvLog.append("\n\n");
 
-        Observable.just(1,2,3,4)
-                .reduce(new BiFunction<Integer, Integer, Integer>() {
-                    @Override
-                    public Integer apply(Integer sum, Integer integer) throws Exception {
-                        mTvLog.append("reduce integer1:"+sum+"  integer:"+integer+"\n");
-                        return sum + integer;
-                    }
-                })
-                .subscribe(new MaybeObserver<Integer>() {
+        mTvLog.append("Observable 发射 1，2，3，4，5\n");
+        Observable.just(1,2,3,4,5)
+                .window(3,2)
+                .subscribe(new Observer<Observable<Integer>>() {
                     @Override
                     public void onSubscribe(Disposable d) {
                         mTvLog.append("onSubscribe\n");
                     }
 
                     @Override
-                    public void onSuccess(Integer integer) {
-                        mTvLog.append("onSuccess 接收到:"+integer+"\n");
-                        Log.i(mActivity.getClass().getSimpleName(),mTvLog.getText().toString());
+                    public void onNext(Observable<Integer> integerObservable) {
+                        mTvLog.append("onNext    "+integerObservable.toString()+"\n");
                     }
 
                     @Override
@@ -75,7 +68,7 @@ public class ReduceOperatorActivity extends BaseOperatorActivity {
                     @Override
                     public void onComplete() {
                         mTvLog.append("onComplete\n");
-
+                        Log.i(mActivity.getClass().getSimpleName(),mTvLog.getText().toString());
                     }
                 });
     }
