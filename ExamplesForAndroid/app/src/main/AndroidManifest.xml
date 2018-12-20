@@ -46,6 +46,8 @@
         <activity android:name=".ui.operators.operator.ScanOperatorActivity"/>
         <activity android:name=".ui.operators.operator.WindowOperatorActivity"/>
         <activity android:name=".ui.operators.operator.PublishSubjectActivity"/>
+        <activity android:name=".ui.operators.operator.AsyncSubjectActivity"/>
+        <activity android:name=".ui.operators.operator.BehaviorSubjectActivity"/>
         <!-- 例子列表界面 -->
         <activity android:name=".ui.examples.ExamplesActivity" />
 

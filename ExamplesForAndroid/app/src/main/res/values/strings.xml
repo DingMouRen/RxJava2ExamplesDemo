@@ -47,11 +47,11 @@
     <string name="rx_window">window</string>
     <string name="rx_window_desc">按照时间划分窗口，将数据发送给不同的Observable</string>
     <string name="rx_PublishSubject">PublishSubject</string>
-    <string name="rx_PublishSubject_desc">onNext() 会通知每个观察者，仅此而已</string>
+    <string name="rx_PublishSubject_desc">onNext() 会通知每个观察者。一旦订阅了，将所有随后观察到的项发送给订阅方。</string>
     <string name="rx_AsyncSubject">AsyncSubject</string>
     <string name="rx_AsyncSubject_desc">在调用 onComplete() 之前，除了 subscribe() 其它的操作都会被缓存，在调用 onComplete() 之后只有最后一个 onNext() 会生效</string>
     <string name="rx_BehaviorSubject">BehaviorSubject</string>
-    <string name="rx_BehaviorSubject_desc">BehaviorSubject 的最后一次 onNext() 操作会被缓存，然后在 subscribe() 后立刻推给新注册的 Observer</string>
+    <string name="rx_BehaviorSubject_desc">发射Observable最近的数据，如果Observable还没有开始发射数据，则发射BehaviorSubject的默认数据</string>
     <string name="rx_single">Single</string>
     <string name="rx_single_desc">Single只会接收一个参数,而SingleObserver只会调用onError或者onSuccess.只发射一条单一的数据，或者一条异常通知。</string>
     <string name="rx_Completable">Completable</string>

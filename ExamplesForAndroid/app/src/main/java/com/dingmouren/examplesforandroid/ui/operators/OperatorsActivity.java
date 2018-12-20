@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import com.dingmouren.examplesforandroid.base.BaseActivity;
 import com.dingmouren.examplesforandroid.R;
 import com.dingmouren.examplesforandroid.model.OperatorModel;
+import com.dingmouren.examplesforandroid.ui.operators.operator.AsyncSubjectActivity;
+import com.dingmouren.examplesforandroid.ui.operators.operator.BehaviorSubjectActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.BufferOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.CompletableOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.ConcatMapOperatorActivity;
@@ -196,8 +198,10 @@ public class OperatorsActivity extends BaseActivity implements OperatorsAdapter.
                 PublishSubjectActivity.newInstance(mActivity,model);
                 break;
             case R.string.rx_AsyncSubject:
+                AsyncSubjectActivity.newInstance(mActivity,model);
                 break;
             case R.string.rx_BehaviorSubject:
+                BehaviorSubjectActivity.newInstance(mActivity,model);
                 break;
             case R.string.rx_Flowable:
                 break;
