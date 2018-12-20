@@ -12,15 +12,20 @@ import android.widget.ImageView;
 import com.dingmouren.examplesforandroid.base.BaseActivity;
 import com.dingmouren.examplesforandroid.R;
 import com.dingmouren.examplesforandroid.model.OperatorModel;
+import com.dingmouren.examplesforandroid.ui.operators.operator.CompletableOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.ConcatMapOperatorActivity;
+import com.dingmouren.examplesforandroid.ui.operators.operator.ConcatOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.CreateOperatorActivity;
+import com.dingmouren.examplesforandroid.ui.operators.operator.DistinctOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.DoOnNextOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.FilterOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.FlatMapOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.IntervalOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.JustOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.MapOperatorActivity;
+import com.dingmouren.examplesforandroid.ui.operators.operator.MayBeOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.SingleActivity;
+import com.dingmouren.examplesforandroid.ui.operators.operator.SkipOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.TakeOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.TimerOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.ZipOperatorActivity;
@@ -146,10 +151,13 @@ public class OperatorsActivity extends BaseActivity implements OperatorsAdapter.
                 IntervalOperatorActivity.newInstance(mActivity,model);
                 break;
             case R.string.rx_skip:
+                SkipOperatorActivity.newInstance(mActivity,model);
                 break;
             case R.string.rx_concat:
+                ConcatOperatorActivity.newInstance(mActivity,model);
                 break;
             case R.string.rx_distinct:
+                DistinctOperatorActivity.newInstance(mActivity,model);
                 break;
             case R.string.rx_buffer:
                 break;
@@ -177,8 +185,10 @@ public class OperatorsActivity extends BaseActivity implements OperatorsAdapter.
                 SingleActivity.newInstance(mActivity,model);
                 break;
             case R.string.rx_Completable:
+                CompletableOperatorActivity.newInstance(mActivity,model);
                 break;
             case R.string.rx_MayBe:
+                MayBeOperatorActivity.newInstance(mActivity,model);
                 break;
             case R.string.rx_Flowable:
                 break;

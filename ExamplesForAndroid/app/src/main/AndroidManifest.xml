@@ -32,6 +32,11 @@
         <activity android:name=".ui.operators.operator.TimerOperatorActivity"/>
         <activity android:name=".ui.operators.operator.IntervalOperatorActivity"/>
         <activity android:name=".ui.operators.operator.SingleActivity"/>
+        <activity android:name=".ui.operators.operator.CompletableOperatorActivity"/>
+        <activity android:name=".ui.operators.operator.MayBeOperatorActivity"/>
+        <activity android:name=".ui.operators.operator.SkipOperatorActivity"/>
+        <activity android:name=".ui.operators.operator.ConcatOperatorActivity"/>
+        <activity android:name=".ui.operators.operator.DistinctOperatorActivity"/>
         <!-- 例子列表界面 -->
         <activity android:name=".ui.examples.ExamplesActivity" />
 
