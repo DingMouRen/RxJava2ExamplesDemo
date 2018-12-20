@@ -28,6 +28,8 @@ import com.dingmouren.examplesforandroid.ui.operators.operator.JustOperatorActiv
 import com.dingmouren.examplesforandroid.ui.operators.operator.LastOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.MapOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.MayBeOperatorActivity;
+import com.dingmouren.examplesforandroid.ui.operators.operator.MergeOperatorActivity;
+import com.dingmouren.examplesforandroid.ui.operators.operator.ReduceOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.SingleActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.SkipOperatorActivity;
 import com.dingmouren.examplesforandroid.ui.operators.operator.TakeOperatorActivity;
@@ -176,8 +178,10 @@ public class OperatorsActivity extends BaseActivity implements OperatorsAdapter.
                 LastOperatorActivity.newInstance(mActivity,model);
                 break;
             case R.string.rx_merge:
+                MergeOperatorActivity.newInstance(mActivity,model);
                 break;
             case R.string.rx_reduce:
+                ReduceOperatorActivity.newInstance(mActivity,model);
                 break;
             case R.string.rx_scan:
                 break;

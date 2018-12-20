@@ -41,6 +41,8 @@
         <activity android:name=".ui.operators.operator.DebounceOperatorActivity"/>
         <activity android:name=".ui.operators.operator.DeferOperatorActivity"/>
         <activity android:name=".ui.operators.operator.LastOperatorActivity"/>
+        <activity android:name=".ui.operators.operator.MergeOperatorActivity"/>
+        <activity android:name=".ui.operators.operator.ReduceOperatorActivity"/>
         <!-- 例子列表界面 -->
         <activity android:name=".ui.examples.ExamplesActivity" />
 
