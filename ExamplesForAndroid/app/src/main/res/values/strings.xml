@@ -62,5 +62,5 @@
     <string name="rx_Flowable_desc">专用于解决背压问题</string>
 
     <!--应用实例-->
-
+    <string name="example_1_download">后台下载文件，前台实时显示进度</string>
 </resources>

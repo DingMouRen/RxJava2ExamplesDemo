@@ -3,7 +3,9 @@ package com.dingmouren.examplesforandroid.ui.examples;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.dingmouren.examplesforandroid.R;
@@ -25,7 +27,7 @@ public class ExamplesActivity extends BaseActivity {
 
     private ImageView mImgBack;
 
-    private OperatorsAdapter mAdapter;
+    private ExampleAdapter mAdapter;
 
     private List<ExampleModel> mExamplesList = new ArrayList<>();
 
@@ -49,9 +51,25 @@ public class ExamplesActivity extends BaseActivity {
     @Override
     public void initView(Bundle savedInstanceState) {
 
+        mRecyclerView = findViewById(R.id.recycler_view);
+        mImgBack = findViewById(R.id.img_back);
+
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mAdapter = new ExampleAdapter(this,mExamplesList);
+        mRecyclerView.setAdapter(mAdapter);
+    }
+
+    @Override
+    public void initListener() {
+        mImgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private void initExamples() {
-
+        mExamplesList.add(new ExampleModel(mActivity,R.string.example_1_download));
     }
 }

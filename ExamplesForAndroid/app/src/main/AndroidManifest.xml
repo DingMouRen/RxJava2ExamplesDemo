@@ -53,7 +53,7 @@
         <activity android:name=".ui.operators.operator.FlowableActivity"/>
         <!-- 例子列表界面 -->
         <activity android:name=".ui.examples.ExamplesActivity" />
-
+        <activity android:name=".ui.examples.example_1.DownloadActivity"/>
     </application>
 
 </manifest>
