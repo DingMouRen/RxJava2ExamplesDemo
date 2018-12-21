@@ -21,6 +21,11 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Response;
 
+/**
+ * 应用实例文章
+ * https://www.jianshu.com/p/c935d0860186
+ */
+
 public class MainActivity extends BaseActivity {
 
     public Button mBtnOperator;
@@ -36,6 +41,36 @@ public class MainActivity extends BaseActivity {
         mBtnOperator = findViewById(R.id.btn_operator);
         mBtnExample = findViewById(R.id.btn_example);
 
+        findViewById(R.id.btn_test).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HttpManager.createService(Api.class).getStudentInfo()
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new Observer<MyResponse<Student>>() {
+                            @Override
+                            public void onSubscribe(Disposable d) {
+                                Log.e("onSubscribe",d.toString());
+                            }
+
+                            @Override
+                            public void onNext(MyResponse<Student> response) {
+
+                                Log.e("onNext",response.data.toString());
+                            }
+
+                            @Override
+                            public void onError(Throwable e) {
+                                Log.e("onError",e.getMessage());
+                            }
+
+                            @Override
+                            public void onComplete() {
+                                Log.e("onComplete","onComplete");
+                            }
+                        });
+            }
+        });
     }
 
     @Override
