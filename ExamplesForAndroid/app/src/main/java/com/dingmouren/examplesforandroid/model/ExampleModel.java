@@ -7,7 +7,9 @@ import android.content.Context;
  */
 public class ExampleModel {
     public String title;
+    public int strId;
     public ExampleModel(Context context,int titleID){
         this.title = context.getResources().getString(titleID);
+        this.strId = titleID;
     }
 }

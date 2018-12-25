@@ -12,6 +12,7 @@ import com.dingmouren.examplesforandroid.R;
 import com.dingmouren.examplesforandroid.base.BaseActivity;
 import com.dingmouren.examplesforandroid.model.ExampleModel;
 import com.dingmouren.examplesforandroid.model.OperatorModel;
+import com.dingmouren.examplesforandroid.ui.examples.example_1.DownloadActivity;
 import com.dingmouren.examplesforandroid.ui.operators.OperatorsActivity;
 import com.dingmouren.examplesforandroid.ui.operators.OperatorsAdapter;
 
@@ -21,7 +22,7 @@ import java.util.List;
 /**
  * @author dingmouren
  */
-public class ExamplesActivity extends BaseActivity {
+public class ExamplesActivity extends BaseActivity implements ExampleAdapter.OnExampleItemClickListener {
 
     private RecyclerView mRecyclerView;
 
@@ -67,9 +68,20 @@ public class ExamplesActivity extends BaseActivity {
                 finish();
             }
         });
+
+        mAdapter.setOnExampleItemClickListener(this);
     }
 
     private void initExamples() {
         mExamplesList.add(new ExampleModel(mActivity,R.string.example_1_download));
+    }
+
+    @Override
+    public void onExampleItemClick(int position, int strId) {
+        switch (strId){
+            case R.string.example_1_download:
+                DownloadActivity.newInstance(mActivity);
+                break;
+        }
     }
 }

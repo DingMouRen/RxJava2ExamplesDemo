@@ -22,6 +22,8 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
 
     private Context mContext;
 
+    private OnExampleItemClickListener mOnExampleItemClickListener;
+
     public ExampleAdapter(Context context,List<ExampleModel> list){
         this.mContext =  context;
         this.mList = list;
@@ -35,15 +37,15 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ExampleViewHolder holder, int position) {
-        ExampleModel bean = mList.get(position);
+    public void onBindViewHolder(@NonNull ExampleViewHolder holder, final int position) {
+        final ExampleModel bean = mList.get(position);
         if (bean == null)return;
         holder.tvTitle.setText(bean.title);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(mOnExampleItemClickListener != null)mOnExampleItemClickListener.onExampleItemClick(position,bean.strId);
             }
         });
     }
@@ -59,5 +61,13 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tv_title);
         }
+    }
+
+    public void setOnExampleItemClickListener(OnExampleItemClickListener listener){
+        this.mOnExampleItemClickListener = listener;
+    }
+
+    public interface OnExampleItemClickListener{
+        void onExampleItemClick(int position,int strId);
     }
 }
