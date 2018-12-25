@@ -3,38 +3,28 @@ package com.dingmouren.examplesforandroid.ui.examples.example_1;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.dingmouren.examplesforandroid.R;
 import com.dingmouren.examplesforandroid.base.BaseActivity;
 import com.dingmouren.examplesforandroid.http.Api;
 import com.dingmouren.examplesforandroid.http.HttpManager;
-import com.dingmouren.examplesforandroid.http.download.FileCallBack;
-import com.dingmouren.examplesforandroid.http.download.FileDownloadObserver;
-import com.dingmouren.examplesforandroid.http.download.ProgressInterceptor;
+import com.dingmouren.examplesforandroid.ui.examples.example_1.download.FileCallBack;
+import com.dingmouren.examplesforandroid.ui.examples.example_1.download.FileDownloadObserver;
+import com.dingmouren.examplesforandroid.ui.examples.example_1.download.ProgressInterceptor;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.text.DecimalFormat;
 
-import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
-import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
-import okio.Okio;
 
 /**
  * @author dingmouren

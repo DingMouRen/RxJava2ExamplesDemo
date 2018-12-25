@@ -11,10 +11,9 @@ import android.widget.ImageView;
 import com.dingmouren.examplesforandroid.R;
 import com.dingmouren.examplesforandroid.base.BaseActivity;
 import com.dingmouren.examplesforandroid.model.ExampleModel;
-import com.dingmouren.examplesforandroid.model.OperatorModel;
 import com.dingmouren.examplesforandroid.ui.examples.example_1.DownloadActivity;
-import com.dingmouren.examplesforandroid.ui.operators.OperatorsActivity;
-import com.dingmouren.examplesforandroid.ui.operators.OperatorsAdapter;
+import com.dingmouren.examplesforandroid.ui.examples.example_3.SearchActivity;
+import com.dingmouren.examplesforandroid.ui.examples.example_2.BufferActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,6 +73,8 @@ public class ExamplesActivity extends BaseActivity implements ExampleAdapter.OnE
 
     private void initExamples() {
         mExamplesList.add(new ExampleModel(mActivity,R.string.example_1_download));
+        mExamplesList.add(new ExampleModel(mActivity,R.string.example_2_buffer));
+        mExamplesList.add(new ExampleModel(mActivity,R.string.example_3_search));
     }
 
     @Override
@@ -81,6 +82,12 @@ public class ExamplesActivity extends BaseActivity implements ExampleAdapter.OnE
         switch (strId){
             case R.string.example_1_download:
                 DownloadActivity.newInstance(mActivity);
+                break;
+            case R.string.example_2_buffer:
+                BufferActivity.newInstance(mActivity);
+                break;
+            case R.string.example_3_search:
+                SearchActivity.newInstance(mActivity);
                 break;
         }
     }

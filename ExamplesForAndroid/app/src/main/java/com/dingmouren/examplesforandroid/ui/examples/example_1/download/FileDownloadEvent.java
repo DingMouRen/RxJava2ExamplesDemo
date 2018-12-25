@@ -1,4 +1,4 @@
-package com.dingmouren.examplesforandroid.http.download;
+package com.dingmouren.examplesforandroid.ui.examples.example_1.download;
 
 /**
  * @author dingmouren

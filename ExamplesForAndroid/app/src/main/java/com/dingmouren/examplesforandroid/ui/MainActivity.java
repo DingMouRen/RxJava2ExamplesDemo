@@ -25,7 +25,7 @@ import retrofit2.Response;
  * 应用实例文章
  * https://www.jianshu.com/p/c935d0860186
  *
- * https://www.jianshu.com/p/b6a1939b3cdb
+ *
  */
 
 public class MainActivity extends BaseActivity {

@@ -56,6 +56,8 @@
         <!-- 例子列表界面 -->
         <activity android:name=".ui.examples.ExamplesActivity" />
         <activity android:name=".ui.examples.example_1.DownloadActivity"/>
+        <activity android:name=".ui.examples.example_2.BufferActivity"/>
+        <activity android:name=".ui.examples.example_3.SearchActivity"/>
 
     </application>
 

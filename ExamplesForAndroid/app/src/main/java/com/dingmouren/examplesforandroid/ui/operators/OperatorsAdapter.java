@@ -41,8 +41,10 @@ public class OperatorsAdapter extends RecyclerView.Adapter<OperatorsAdapter.Oper
 
         final OperatorModel bean = mList.get(position);
 
+        holder.tvIndex.setText(position+1 +"");
         holder.tvOperatorName.setText(bean.operatorName);
         holder.tvOperatorDesc.setText(bean.operatorDesc);
+
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,12 +64,15 @@ public class OperatorsAdapter extends RecyclerView.Adapter<OperatorsAdapter.Oper
 
     public class OperatorViewHolder extends RecyclerView.ViewHolder{
 
+        TextView tvIndex;
+
         TextView tvOperatorName;
 
         TextView tvOperatorDesc;
 
         public OperatorViewHolder(@NonNull View itemView) {
             super(itemView);
+            tvIndex = itemView.findViewById(R.id.tv_operator_index);
             tvOperatorName = itemView.findViewById(R.id.tv_operator_name);
             tvOperatorDesc = itemView.findViewById(R.id.tv_operator_desc);
         }

@@ -1,6 +1,7 @@
 package com.dingmouren.examplesforandroid.http;
 
-import com.dingmouren.examplesforandroid.http.download.ProgressInterceptor;
+
+import com.dingmouren.examplesforandroid.ui.examples.example_1.download.ProgressInterceptor;
 
 import java.util.concurrent.TimeUnit;
 

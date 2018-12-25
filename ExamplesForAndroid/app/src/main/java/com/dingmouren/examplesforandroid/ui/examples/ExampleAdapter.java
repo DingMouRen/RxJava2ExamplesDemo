@@ -40,6 +40,7 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
     public void onBindViewHolder(@NonNull ExampleViewHolder holder, final int position) {
         final ExampleModel bean = mList.get(position);
         if (bean == null)return;
+        holder.tvIndex.setText(position + 1+"");
         holder.tvTitle.setText(bean.title);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -56,10 +57,11 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
     }
 
     public class ExampleViewHolder extends RecyclerView.ViewHolder{
-        TextView tvTitle;
+        TextView tvTitle,tvIndex;
         public ExampleViewHolder(@NonNull View itemView) {
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tv_title);
+            tvIndex = itemView.findViewById(R.id.tv_index);
         }
     }
 
