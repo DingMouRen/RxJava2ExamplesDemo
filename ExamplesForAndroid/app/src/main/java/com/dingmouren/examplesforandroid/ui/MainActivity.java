@@ -25,6 +25,8 @@ import retrofit2.Response;
  * 应用实例文章
  * https://www.jianshu.com/p/c935d0860186
  *
+ * https://github.com/imZeJun/RxSample
+ *
  *
  */
 
