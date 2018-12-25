@@ -1,5 +1,7 @@
 package com.dingmouren.examplesforandroid.http;
 
+import com.dingmouren.examplesforandroid.http.download.ProgressInterceptor;
+
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -22,7 +24,7 @@ public class HttpManager {
 
     private static final String BASE_URL_1 = "http://localhost:8080/";
 
-    private static final String BASE_URL_2 = "http://10.0.2.2:8080/";
+    private static final String BASE_URL_2 = "http://10.0.2.2:8080/";//原生模拟器使用的地址
 
     /*OkHttp的构建者对象*/
     private static OkHttpClient.Builder sOkHttpBuilder = new OkHttpClient.Builder()
@@ -62,6 +64,12 @@ public class HttpManager {
      */
     public static <S> S createService(Class<S> serviceClass){
         OkHttpClient okHttpClient = sOkHttpBuilder.build();
+        Retrofit retrofit = sRetrofitBuilder.client(okHttpClient).build();
+        return retrofit.create(serviceClass);
+    }
+
+    public static <S> S createService(Class<S> serviceClass, ProgressInterceptor interceptor){
+        OkHttpClient okHttpClient = sOkHttpBuilder.addInterceptor(interceptor).build();
         Retrofit retrofit = sRetrofitBuilder.client(okHttpClient).build();
         return retrofit.create(serviceClass);
     }

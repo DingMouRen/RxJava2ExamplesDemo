@@ -17,11 +17,15 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected Activity mActivity;
 
+    protected String TAG ;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         this.mActivity = this;
+
+        TAG = getClass().getSimpleName();
 
         init();
 
