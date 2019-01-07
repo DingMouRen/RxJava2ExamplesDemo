@@ -27,8 +27,9 @@ public class HttpManager {
 
     private static final String BASE_URL_2 = "http://10.0.2.2:8080/";//原生模拟器使用的地址
 
+    private static final String BASE_URL_3 = "http://192.168.90.107:8080/";//网线链接IP地址
 
-    private static final String BASE_URL_3 = "http://192.168.90.107:8080/";//原生模拟器使用的地址
+    private static final String BASE_URL_4 = "http://192.168.102.158:8080/";//wlan IP地址
 
     /*OkHttp的构建者对象*/
     private static OkHttpClient.Builder sOkHttpBuilder = new OkHttpClient.Builder()
@@ -40,7 +41,7 @@ public class HttpManager {
 
     /*Retrofit的构建者对象*/
     private static Retrofit.Builder sRetrofitBuilder = new Retrofit.Builder()
-            .baseUrl(BASE_URL_3)
+            .baseUrl(BASE_URL_4)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create());
 

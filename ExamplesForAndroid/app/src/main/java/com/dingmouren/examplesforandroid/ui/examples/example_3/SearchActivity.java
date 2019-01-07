@@ -3,11 +3,29 @@ package com.dingmouren.examplesforandroid.ui.examples.example_3;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dingmouren.examplesforandroid.R;
 import com.dingmouren.examplesforandroid.base.BaseActivity;
+
+import java.util.concurrent.TimeUnit;
+
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.ObservableSource;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.functions.Function;
+import io.reactivex.functions.Predicate;
+import io.reactivex.observers.DisposableObserver;
+import io.reactivex.schedulers.Schedulers;
+import io.reactivex.subjects.PublishSubject;
 
 /**
  * 应用场景：
@@ -35,6 +53,14 @@ public class SearchActivity extends BaseActivity {
 
     private TextView mTvTitle;
 
+    private EditText mEditText;
+
+    private PublishSubject<String> mPublishSubject;
+
+    private DisposableObserver<String> mDisposableObserver;
+
+    private CompositeDisposable mCompositeDisposable;
+
     public static void newInstance(Context context){
         context.startActivity(new Intent(context,SearchActivity.class));
     }
@@ -48,7 +74,100 @@ public class SearchActivity extends BaseActivity {
     public void initView(Bundle savedInstanceState) {
         mImgBack = findViewById(R.id.img_back);
         mTvTitle = findViewById(R.id.tv_example_title);
+        mEditText = findViewById(R.id.edit_text);
 
         mTvTitle.setText(getResources().getString(R.string.example_3_search));
+
+        initObservable();
+    }
+
+
+    @Override
+    public void initListener() {
+        mImgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        mEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                toSearch(s.toString());
+            }
+        });
+    }
+
+    private void toSearch(String query) {
+        mPublishSubject.onNext(query);
+    }
+
+    /**
+     * 初始化Observable
+     */
+    private void initObservable() {
+
+        mPublishSubject = PublishSubject.create();
+
+        mDisposableObserver = new DisposableObserver<String>() {
+            @Override
+            public void onNext(String s) {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        };
+
+        mPublishSubject.debounce(200, TimeUnit.MILLISECONDS)//不会发射时间间隔小于200毫秒的
+                .filter(new Predicate<String>() {//过滤操作符，只有字符串长度大于0才能发射
+                    @Override
+                    public boolean test(String s) throws Exception {
+                        return s.length() > 0;
+                    }
+                }).switchMap(new Function<String, ObservableSource<String>>() {//switchMap操作符会保存最新的Observable产生的结果而舍弃旧的结果
+            @Override
+            public ObservableSource<String> apply(String s) throws Exception {
+                return getSearchObservable(s);
+            }
+        }).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(mDisposableObserver);
+
+        mCompositeDisposable = new CompositeDisposable();
+
+        mCompositeDisposable.add(mDisposableObserver);
+    }
+
+    private ObservableSource<String> getSearchObservable(String query) {
+        return Observable.create(new ObservableOnSubscribe<String>() {
+            @Override
+            public void subscribe(ObservableEmitter<String> e) throws Exception {
+
+            }
+        }).subscribeOn(Schedulers.io());
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mCompositeDisposable != null) mCompositeDisposable.clear();
     }
 }
