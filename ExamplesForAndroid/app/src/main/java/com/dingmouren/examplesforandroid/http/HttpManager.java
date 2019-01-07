@@ -30,6 +30,11 @@ public class HttpManager {
 
     private static final String BASE_URL_3 = "http://192.168.90.107:8080/";//电脑的ip地址
 
+    private static final String BASE_URL_4 = "http://192.168.102.158:8080/";//wlan IP地址
+
+    private static final String BASE_URL_5 = "http://192.168.199.242:8080/";//mac ip地址
+
+
     /*OkHttp的构建者对象*/
     private static OkHttpClient.Builder sOkHttpBuilder = new OkHttpClient.Builder()
             .readTimeout(READ_TIME_OUT, TimeUnit.SECONDS)
@@ -40,7 +45,7 @@ public class HttpManager {
 
     /*Retrofit的构建者对象*/
     private static Retrofit.Builder sRetrofitBuilder = new Retrofit.Builder()
-            .baseUrl(BASE_URL_2)
+            .baseUrl(BASE_URL_5)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create());
 

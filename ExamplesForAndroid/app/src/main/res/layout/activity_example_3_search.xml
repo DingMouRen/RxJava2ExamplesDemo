@@ -30,4 +30,18 @@
             android:layout_alignParentBottom="true"
             />
     </RelativeLayout>
+
+    <EditText
+        android:id="@+id/edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        />
+    <TextView
+        android:id="@+id/tv_log"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        />
 </LinearLayout>

@@ -3,11 +3,37 @@ package com.dingmouren.examplesforandroid.ui.examples.example_3;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dingmouren.examplesforandroid.R;
 import com.dingmouren.examplesforandroid.base.BaseActivity;
+import com.dingmouren.examplesforandroid.http.Api;
+import com.dingmouren.examplesforandroid.http.HttpManager;
+import com.dingmouren.examplesforandroid.model.MyResponse;
+import com.dingmouren.examplesforandroid.util.JsonUtils;
+import com.dingmouren.examplesforandroid.util.LogUtils;
+import com.google.gson.Gson;
+
+import java.util.concurrent.TimeUnit;
+
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.ObservableSource;
+import io.reactivex.Scheduler;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.functions.Function;
+import io.reactivex.functions.Predicate;
+import io.reactivex.observers.DisposableObserver;
+import io.reactivex.schedulers.Schedulers;
+import io.reactivex.subjects.PublishSubject;
 
 /**
  * 应用场景：
@@ -35,6 +61,16 @@ public class SearchActivity extends BaseActivity {
 
     private TextView mTvTitle;
 
+    private EditText mEditText;
+
+    private TextView mTvLog;
+
+    private PublishSubject<String> mPublishSubject;
+
+    private DisposableObserver<MyResponse<String>> mDisposableObserver;
+
+    private CompositeDisposable mCompositeDisposable;
+
     public static void newInstance(Context context){
         context.startActivity(new Intent(context,SearchActivity.class));
     }
@@ -48,7 +84,95 @@ public class SearchActivity extends BaseActivity {
     public void initView(Bundle savedInstanceState) {
         mImgBack = findViewById(R.id.img_back);
         mTvTitle = findViewById(R.id.tv_example_title);
+        mEditText = findViewById(R.id.edit_text);
+        mTvLog = findViewById(R.id.tv_log);
 
         mTvTitle.setText(getResources().getString(R.string.example_3_search));
+
+        initObservable();
+    }
+
+
+    @Override
+    public void initListener() {
+        mImgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        mEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                toSearch(s.toString());
+            }
+        });
+    }
+
+    private void toSearch(String query) {
+        mPublishSubject.onNext(query);
+    }
+
+    /**
+     * 初始化Observable
+     */
+    private void initObservable() {
+
+        mPublishSubject = PublishSubject.create();
+
+        mDisposableObserver = new DisposableObserver<MyResponse<String>>() {
+            @Override
+            public void onNext(MyResponse<String> myResponse) {
+                Gson gson = new Gson();
+                mTvLog.setText(JsonUtils.formatJson(gson.toJson(myResponse)));
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        };
+
+        mPublishSubject.debounce(200, TimeUnit.MILLISECONDS)//不会发射时间间隔小于200毫秒的
+                .filter(new Predicate<String>() {//过滤操作符，只有字符串长度大于0才能发射
+                    @Override
+                    public boolean test(String s) throws Exception {
+                        return s.length() > 0;
+                    }
+                }).switchMap(new Function<String, ObservableSource<MyResponse<String>>>() {//switchMap操作符会保存最新的Observable产生的结果而舍弃旧的结果
+            @Override
+            public ObservableSource<MyResponse<String >> apply(String s) throws Exception {
+                return HttpManager.createService(Api.class).search(s).subscribeOn(Schedulers.io());
+            }
+        }).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(mDisposableObserver);
+
+        mCompositeDisposable = new CompositeDisposable();
+
+        mCompositeDisposable.add(mDisposableObserver);
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mCompositeDisposable != null) mCompositeDisposable.clear();
     }
 }

@@ -86,5 +86,15 @@ public class ApiController {
         return response;
     }
 
+    /**
+     * 优化搜索功能的例子api
+     * @return
+     */
+    @GetMapping(value = "/search")
+    public Result<String> search(@RequestParam String query){
+        return ResultUtil.success(query);
+
+    }
+
 
 }

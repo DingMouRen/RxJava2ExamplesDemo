@@ -1,6 +1,8 @@
 package com.dingmouren.examplesforandroid.base;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -50,6 +52,8 @@ public abstract class BaseOperatorActivity extends BaseActivity {
                 test();
             }
         });
+
+
     }
 
     protected abstract void test();
