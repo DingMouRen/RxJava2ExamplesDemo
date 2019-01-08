@@ -38,6 +38,18 @@ public interface Api {
     @GET("/file/download/img")
     Observable<ResponseBody> downloadImg();
 
+    /**
+     * 搜索联想优化
+     * @param query
+     * @return
+     */
     @GET("/search")
     Observable<MyResponse<String>> search(@Query("query") String query);
+
+    /**
+     * 轮询操作
+     * @return
+     */
+    @GET("/polling")
+    Observable<MyResponse<String>> polling();
 }

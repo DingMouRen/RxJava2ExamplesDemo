@@ -18,6 +18,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.Date;
 
 @RestController
 public class ApiController {
@@ -93,8 +94,12 @@ public class ApiController {
     @GetMapping(value = "/search")
     public Result<String> search(@RequestParam String query){
         return ResultUtil.success(query);
-
     }
 
+    @GetMapping(value = "/polling")
+    public Result<String> polling(){
+        String time = new Date().toString();
+        return ResultUtil.success("返回响应时间："+time);
+    }
 
 }

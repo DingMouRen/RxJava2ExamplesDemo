@@ -65,4 +65,5 @@
     <string name="example_1_download">后台下载文件，前台实时显示进度</string>
     <string name="example_2_buffer">计算一段时间内数据的平均值</string>
     <string name="example_3_search">优化搜索联想功能</string>
+    <string name="example_4_polling">轮询操作</string>
 </resources>

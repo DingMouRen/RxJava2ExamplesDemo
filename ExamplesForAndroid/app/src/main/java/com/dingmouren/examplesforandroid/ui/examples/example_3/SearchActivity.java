@@ -52,7 +52,7 @@ import io.reactivex.subjects.PublishSubject;
  * 反之，则在收到新的关键词后，继续等待200ms。
  * 2.使用filter操作符，只有关键词的长度大于0时才发送事件给下游。
  * 3.使用switchMap操作符，这样当发起了abc的请求之后，即使ab的结果返回了，也不会发送给下游，从而避免了出现前面介绍的搜索词和联想结果不匹配的问题
-
+ * switchMap操作符会保存最新的Observable产生的结果而舍弃旧的结果，当上一个任务尚未完成时，就开始下一个任务的话，上一个任务就会被取消掉。（注意需要在不同的线程）
  * @author dingmouren
  */
 public class SearchActivity extends BaseActivity {
@@ -131,7 +131,7 @@ public class SearchActivity extends BaseActivity {
 
         mPublishSubject = PublishSubject.create();
 
-        mDisposableObserver = new DisposableObserver<MyResponse<String>>() {
+        mDisposableObserver = new DisposableObserver<MyResponse<String>>() {//Disposable是一个抽象的观察者，可以通过disposable进行异步取消
             @Override
             public void onNext(MyResponse<String> myResponse) {
                 Gson gson = new Gson();
@@ -150,13 +150,13 @@ public class SearchActivity extends BaseActivity {
             }
         };
 
-        mPublishSubject.debounce(200, TimeUnit.MILLISECONDS)//不会发射时间间隔小于200毫秒的
+        mPublishSubject.debounce(200, TimeUnit.MILLISECONDS)//不会发射时间间隔小于200毫秒的，
                 .filter(new Predicate<String>() {//过滤操作符，只有字符串长度大于0才能发射
                     @Override
                     public boolean test(String s) throws Exception {
                         return s.length() > 0;
                     }
-                }).switchMap(new Function<String, ObservableSource<MyResponse<String>>>() {//switchMap操作符会保存最新的Observable产生的结果而舍弃旧的结果
+                }).switchMap(new Function<String, ObservableSource<MyResponse<String>>>() {//switchMap操作符会保存最新的Observable产生的结果而舍弃旧的结果，当上一个任务尚未完成时，就开始下一个任务的话，上一个任务就会被取消掉
             @Override
             public ObservableSource<MyResponse<String >> apply(String s) throws Exception {
                 return HttpManager.createService(Api.class).search(s).subscribeOn(Schedulers.io());
@@ -164,9 +164,9 @@ public class SearchActivity extends BaseActivity {
         }).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(mDisposableObserver);
 
-        mCompositeDisposable = new CompositeDisposable();
+        mCompositeDisposable = new CompositeDisposable();//用于取消订阅关系
 
-        mCompositeDisposable.add(mDisposableObserver);
+        mCompositeDisposable.add(mDisposableObserver);//添加到订阅关系
     }
 
 

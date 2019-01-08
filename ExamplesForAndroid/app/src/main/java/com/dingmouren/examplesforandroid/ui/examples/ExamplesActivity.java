@@ -14,6 +14,7 @@ import com.dingmouren.examplesforandroid.model.ExampleModel;
 import com.dingmouren.examplesforandroid.ui.examples.example_1.DownloadActivity;
 import com.dingmouren.examplesforandroid.ui.examples.example_3.SearchActivity;
 import com.dingmouren.examplesforandroid.ui.examples.example_2.BufferActivity;
+import com.dingmouren.examplesforandroid.ui.examples.example_4.PollingActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,6 +76,7 @@ public class ExamplesActivity extends BaseActivity implements ExampleAdapter.OnE
         mExamplesList.add(new ExampleModel(mActivity,R.string.example_1_download));
         mExamplesList.add(new ExampleModel(mActivity,R.string.example_2_buffer));
         mExamplesList.add(new ExampleModel(mActivity,R.string.example_3_search));
+        mExamplesList.add(new ExampleModel(mActivity,R.string.example_4_polling));
     }
 
     @Override
@@ -88,6 +90,9 @@ public class ExamplesActivity extends BaseActivity implements ExampleAdapter.OnE
                 break;
             case R.string.example_3_search:
                 SearchActivity.newInstance(mActivity);
+                break;
+            case R.string.example_4_polling:
+                PollingActivity.newInstance(mActivity);
                 break;
         }
     }
