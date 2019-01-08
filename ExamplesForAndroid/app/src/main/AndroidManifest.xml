@@ -59,6 +59,7 @@
         <activity android:name=".ui.examples.example_2.BufferActivity"/>
         <activity android:name=".ui.examples.example_3.SearchActivity"/>
         <activity android:name=".ui.examples.example_4.PollingActivity"/>
+        <activity android:name=".ui.examples.example_5.ExceptionRetryActivity"/>
 
     </application>
 
