@@ -17,9 +17,12 @@ import com.dingmouren.examplesforandroid.ui.examples.example_2.BufferActivity;
 import com.dingmouren.examplesforandroid.ui.examples.example_4.PollingActivity;
 import com.dingmouren.examplesforandroid.ui.examples.example_5.ExceptionRetryActivity;
 import com.dingmouren.examplesforandroid.ui.examples.example_6.ValidateActivity;
+import com.dingmouren.examplesforandroid.ui.examples.example_7.CacheActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.Cache;
 
 /**
  * @author dingmouren
@@ -81,6 +84,7 @@ public class ExamplesActivity extends BaseActivity implements ExampleAdapter.OnE
         mExamplesList.add(new ExampleModel(mActivity,R.string.example_4_polling));
         mExamplesList.add(new ExampleModel(mActivity,R.string.example_5_exception_retry));
         mExamplesList.add(new ExampleModel(mActivity,R.string.example_6_validate));
+        mExamplesList.add(new ExampleModel(mActivity,R.string.example_7_cache));
     }
 
     @Override
@@ -103,6 +107,9 @@ public class ExamplesActivity extends BaseActivity implements ExampleAdapter.OnE
                 break;
             case R.string.example_6_validate:
                 ValidateActivity.newInstance(mActivity);
+                break;
+            case R.string.example_7_cache:
+                CacheActivity.newInstance(mActivity);
                 break;
         }
     }

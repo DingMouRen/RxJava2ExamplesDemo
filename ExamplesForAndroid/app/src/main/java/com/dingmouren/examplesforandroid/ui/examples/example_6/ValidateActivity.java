@@ -116,6 +116,13 @@ public class ValidateActivity extends BaseActivity {
                 Toast.makeText(mActivity,"登录成功",Toast.LENGTH_SHORT).show();
             }
         });
+
+        mImgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     @Override
