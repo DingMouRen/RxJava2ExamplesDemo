@@ -96,10 +96,23 @@ public class ApiController {
         return ResultUtil.success(query);
     }
 
+    /**
+     * 轮询操作
+     * @return
+     */
     @GetMapping(value = "/polling")
     public Result<String> polling(){
         String time = new Date().toString();
         return ResultUtil.success("返回响应时间："+time);
+    }
+
+    /**
+     * 基于错误的重试操作
+     * @return
+     */
+    @GetMapping(value = "/retry")
+    public Result<String> retry(){
+       return ResultUtil.success("请求成功");
     }
 
 }

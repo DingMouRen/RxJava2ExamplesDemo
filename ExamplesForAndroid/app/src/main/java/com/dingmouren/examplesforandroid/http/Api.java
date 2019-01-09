@@ -52,4 +52,11 @@ public interface Api {
      */
     @GET("/polling")
     Observable<MyResponse<String>> polling();
+
+    /**
+     * 错误重试
+     * @return
+     */
+    @GET("/retry")
+    Observable<MyResponse<String>> retry();
 }

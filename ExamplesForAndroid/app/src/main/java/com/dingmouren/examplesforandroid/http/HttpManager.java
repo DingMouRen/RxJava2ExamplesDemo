@@ -45,7 +45,7 @@ public class HttpManager {
 
     /*Retrofit的构建者对象*/
     private static Retrofit.Builder sRetrofitBuilder = new Retrofit.Builder()
-            .baseUrl(BASE_URL_4)
+            .baseUrl(BASE_URL_3)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create());
 
