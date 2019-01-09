@@ -60,6 +60,7 @@
         <activity android:name=".ui.examples.example_3.SearchActivity"/>
         <activity android:name=".ui.examples.example_4.PollingActivity"/>
         <activity android:name=".ui.examples.example_5.ExceptionRetryActivity"/>
+        <activity android:name=".ui.examples.example_6.ValidateActivity"/>
 
     </application>
 

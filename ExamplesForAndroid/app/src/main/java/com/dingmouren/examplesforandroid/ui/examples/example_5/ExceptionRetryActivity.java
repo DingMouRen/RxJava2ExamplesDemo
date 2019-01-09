@@ -62,6 +62,8 @@ public class ExceptionRetryActivity extends BaseActivity {
         mBtn = findViewById(R.id.btn);
         mTv = findViewById(R.id.tv);
 
+        mTvTitle.setText(mActivity.getResources().getString(R.string.example_5_exception_retry));
+
         mCompositeDisposable = new CompositeDisposable();
     }
 

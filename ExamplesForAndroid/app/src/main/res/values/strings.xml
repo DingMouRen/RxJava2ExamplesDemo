@@ -67,4 +67,5 @@
     <string name="example_3_search">优化搜索联想功能</string>
     <string name="example_4_polling">轮询操作</string>
     <string name="example_5_exception_retry">基于错误类型的重试请求</string>
+    <string name="example_6_validate">多个输入的验证</string>
 </resources>
