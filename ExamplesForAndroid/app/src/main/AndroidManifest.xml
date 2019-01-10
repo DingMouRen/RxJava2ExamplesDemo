@@ -62,6 +62,7 @@
         <activity android:name=".ui.examples.example_5.ExceptionRetryActivity"/>
         <activity android:name=".ui.examples.example_6.ValidateActivity"/>
         <activity android:name=".ui.examples.example_7.CacheActivity"/>
+        <activity android:name=".ui.examples.example_8.CountdownActivity"/>
 
     </application>
 
