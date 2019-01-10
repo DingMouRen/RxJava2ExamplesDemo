@@ -94,7 +94,7 @@ public class CountdownActivity extends BaseActivity {
 
         mCompositeDisposable.clear();
 
-        Observable<Long> observable = Observable.intervalRange(0,countDownTimeLong,0,1, TimeUnit.SECONDS);
+        Observable<Long> observable = Observable.intervalRange(0,countDownTimeLong + 1,0,1, TimeUnit.SECONDS);
 
         DisposableObserver<Long> disposableObserver = new DisposableObserver<Long>() {
             @Override
