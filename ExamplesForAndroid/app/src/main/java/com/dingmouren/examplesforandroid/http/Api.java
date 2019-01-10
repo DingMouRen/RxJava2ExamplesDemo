@@ -1,11 +1,13 @@
 package com.dingmouren.examplesforandroid.http;
 
+import com.dingmouren.examplesforandroid.model.CacheToNetData;
 import com.dingmouren.examplesforandroid.model.MyResponse;
 import com.dingmouren.examplesforandroid.model.Student;
 
+import java.util.List;
+
 import io.reactivex.Observable;
 import okhttp3.ResponseBody;
-import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 import retrofit2.http.Streaming;
@@ -59,4 +61,10 @@ public interface Api {
      */
     @GET("/retry")
     Observable<MyResponse<String>> retry();
+
+    /**
+     * 优先加载缓存，同时发起请求
+     */
+    @GET("/net/data")
+    Observable<MyResponse<List<CacheToNetData>>> getNetData(@Query("delayTime") long delayTime);
 }

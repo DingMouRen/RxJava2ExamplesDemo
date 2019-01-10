@@ -70,6 +70,7 @@ public class DeferOperatorActivity extends BaseOperatorActivity {
             @Override
             public void onNext(Integer value) {
                 mTvLog.append("onNext 接收到："+value+"\n");
+                Log.e(mActivity.getClass().getSimpleName(),mTvLog.getText().toString());
             }
 
             @Override

@@ -39,7 +39,7 @@
     <string name="rx_last">last</string>
     <string name="rx_last_desc">取出最后一个值，参数是没有值的时候的默认值</string>
     <string name="rx_merge">merge</string>
-    <string name="rx_merge_desc">将多个Observable合起来，接受可变参数，也支持使用迭代器集合</string>
+    <string name="rx_merge_desc">将多个Observable合起来，接受可变参数，也支持使用迭代器集合.支持发射器同时发射数据</string>
     <string name="rx_reduce">reduce</string>
     <string name="rx_reduce_desc">把一个被观察者中的多个事件进行压缩，最后发射压缩后的事件。聚合或压缩。</string>
     <string name="rx_scan">scan</string>

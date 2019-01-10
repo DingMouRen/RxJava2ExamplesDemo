@@ -1,5 +1,6 @@
 package com.example.rxjava2.demoapi.controller;
 
+import com.example.rxjava2.demoapi.domain.NetData;
 import com.example.rxjava2.demoapi.domain.Result;
 import com.example.rxjava2.demoapi.domain.Student;
 import com.example.rxjava2.demoapi.util.ResultUtil;
@@ -18,7 +19,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @RestController
 public class ApiController {
@@ -113,6 +116,23 @@ public class ApiController {
     @GetMapping(value = "/retry")
     public Result<String> retry(){
        return ResultUtil.success("请求成功");
+    }
+
+    /**
+     * 优先加载缓存，同时发起请求
+     * @return
+     */
+    @GetMapping(value = "/net/data")
+    public Result<List<NetData>> getNetData(@RequestParam("delayTime") Long delayTime) throws InterruptedException {
+
+        Thread.sleep(delayTime);
+
+        List<NetData> list = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            NetData netData = new NetData("来自网络","数据项 --- "+i);
+            list.add(netData);
+        }
+        return ResultUtil.success(list);
     }
 
 }
