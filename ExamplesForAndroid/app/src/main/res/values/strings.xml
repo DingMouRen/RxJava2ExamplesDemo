@@ -70,4 +70,6 @@
     <string name="example_6_validate">多个输入的验证</string>
     <string name="example_7_cache">优先加载本地缓存，同时发起网络请求</string>
     <string name="example_8_count_down">倒计时</string>
+    <string name="example_9_nest">嵌套网络请求</string>
+    <string name="example_10_zip">合并两个网络请求得数据</string>
 </resources>

@@ -12,6 +12,7 @@ import com.dingmouren.examplesforandroid.R;
 import com.dingmouren.examplesforandroid.base.BaseActivity;
 import com.dingmouren.examplesforandroid.model.ExampleModel;
 import com.dingmouren.examplesforandroid.ui.examples.example_1.DownloadActivity;
+import com.dingmouren.examplesforandroid.ui.examples.example_10.ZipActivity;
 import com.dingmouren.examplesforandroid.ui.examples.example_3.SearchActivity;
 import com.dingmouren.examplesforandroid.ui.examples.example_2.BufferActivity;
 import com.dingmouren.examplesforandroid.ui.examples.example_4.PollingActivity;
@@ -19,6 +20,7 @@ import com.dingmouren.examplesforandroid.ui.examples.example_5.ExceptionRetryAct
 import com.dingmouren.examplesforandroid.ui.examples.example_6.ValidateActivity;
 import com.dingmouren.examplesforandroid.ui.examples.example_7.CacheActivity;
 import com.dingmouren.examplesforandroid.ui.examples.example_8.CountdownActivity;
+import com.dingmouren.examplesforandroid.ui.examples.example_9.NestQuestActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -87,6 +89,8 @@ public class ExamplesActivity extends BaseActivity implements ExampleAdapter.OnE
         mExamplesList.add(new ExampleModel(mActivity,R.string.example_6_validate));
         mExamplesList.add(new ExampleModel(mActivity,R.string.example_7_cache));
         mExamplesList.add(new ExampleModel(mActivity,R.string.example_8_count_down));
+        mExamplesList.add(new ExampleModel(mActivity,R.string.example_9_nest));
+        mExamplesList.add(new ExampleModel(mActivity,R.string.example_10_zip));
     }
 
     @Override
@@ -115,6 +119,12 @@ public class ExamplesActivity extends BaseActivity implements ExampleAdapter.OnE
                 break;
             case R.string.example_8_count_down:
                 CountdownActivity.newInstance(mActivity);
+                break;
+            case R.string.example_9_nest:
+                NestQuestActivity.newInstance(mActivity);
+                break;
+            case R.string.example_10_zip:
+                ZipActivity.newInstance(mActivity);
                 break;
         }
     }

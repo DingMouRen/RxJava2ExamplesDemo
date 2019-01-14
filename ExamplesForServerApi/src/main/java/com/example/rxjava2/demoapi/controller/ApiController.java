@@ -1,8 +1,6 @@
 package com.example.rxjava2.demoapi.controller;
 
-import com.example.rxjava2.demoapi.domain.NetData;
-import com.example.rxjava2.demoapi.domain.Result;
-import com.example.rxjava2.demoapi.domain.Student;
+import com.example.rxjava2.demoapi.domain.*;
 import com.example.rxjava2.demoapi.util.ResultUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,21 +26,6 @@ public class ApiController {
 
     private static final Logger sLogger = LoggerFactory.getLogger(ApiController.class);
 
-    /**
-     * 返回学生信息
-     * @return
-     */
-    @GetMapping(value = "/student_info")
-    public Result<Student> getStudent(){
-        Student student = new Student();
-        student.setName("小明");
-        student.setAge("18");
-        Student.SchoolBag schoolBag = new Student.SchoolBag();
-        schoolBag.setBagName("大书包");
-        schoolBag.setBagPrice("$99");
-        student.setSchoolBag(schoolBag);
-        return ResultUtil.success(student);
-    }
 
     /**
      * 下载图片
@@ -133,6 +116,59 @@ public class ApiController {
             list.add(netData);
         }
         return ResultUtil.success(list);
+    }
+
+    /**
+     * 嵌套网络请求
+     * 获取第二道门得密码
+     */
+    @GetMapping(value = "nest/1")
+    public Result<Nest1Bean> requestNest1(@RequestParam("pwd") int firstDoorPwd){
+        Nest1Bean bean = null;
+        if (firstDoorPwd == 1234){
+            bean =  new Nest1Bean("获取到第二道门得密码",1234);
+        }else {
+            bean =  new Nest1Bean("没有获取到第二道门得密码",0);
+        }
+        return ResultUtil.success(bean);
+    }
+
+    /**
+     * 嵌套网络请求
+     * 打开第二道门
+     */
+    @GetMapping(value = "nest/2")
+    public Result<Nest2Bean> requestNest2(@RequestParam("pwd") int secondDoorPwd){
+        Nest2Bean bean = null;
+        if (secondDoorPwd == 1234){
+            bean = new Nest2Bean("打开第二道门","第二道门被打开，好多宝藏");
+        }else {
+            bean = new Nest2Bean("没有打开第二道门","小伙子，宝藏正在离你而去。。。。");
+        }
+        return ResultUtil.success(bean);
+    }
+
+    /**
+     * 获取指定年级得老师
+     */
+    @GetMapping(value = "/teacher")
+    public Result<Teacher> getTeacher(@RequestParam("grade") int grade){
+        Teacher teacher = new Teacher(grade+"年级老师:Json-"+grade,grade+"");
+        return ResultUtil.success(teacher);
+    }
+
+    /**
+     * 获取指定年级得学生
+     */
+    @GetMapping(value = "/students")
+    public Result<List<Student>> getStudents(@RequestParam("grade") int grade){
+        List<Student> studentList = new ArrayList<>();
+        String[] studentNames = new String[]{"小红","小明","小黑","小白","拉拉"};
+        for (int i = 0; i < studentNames.length; i++) {
+            Student student = new Student(grade+"年级学生:"+studentNames[i],grade+"",i%2 == 1 ?"男":"女");
+            studentList.add(student);
+        }
+        return ResultUtil.success(studentList);
     }
 
 }

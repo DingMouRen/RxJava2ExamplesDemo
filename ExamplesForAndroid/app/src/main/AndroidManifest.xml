@@ -63,6 +63,8 @@
         <activity android:name=".ui.examples.example_6.ValidateActivity"/>
         <activity android:name=".ui.examples.example_7.CacheActivity"/>
         <activity android:name=".ui.examples.example_8.CountdownActivity"/>
+        <activity android:name=".ui.examples.example_9.NestQuestActivity"/>
+        <activity android:name=".ui.examples.example_10.ZipActivity"/>
 
     </application>
 
