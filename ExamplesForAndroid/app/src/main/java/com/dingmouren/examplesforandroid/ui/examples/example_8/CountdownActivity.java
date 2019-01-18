@@ -88,13 +88,24 @@ public class CountdownActivity extends BaseActivity {
 
     /**
      * 开始倒计时
+     intervalRange操作符：
+     start：发送数据的起始值，为Long型。
+     count：总共发送多少项数据。
+     initialDelay：发送第一个数据项时的起始时延。
+     period：两项数据之间的间隔时间。
+     TimeUnit：时间单位。
      * @param countDownTimeLong
      */
     private void startCountDown(final long countDownTimeLong) {
 
         mCompositeDisposable.clear();
 
-        Observable<Long> observable = Observable.intervalRange(0,countDownTimeLong + 1,0,1, TimeUnit.SECONDS);
+        Observable<Long> observable
+                = Observable.intervalRange(0,//发送数据的起始值，为Long型。
+                countDownTimeLong + 1,//总共发送多少项数据
+                0,//发送第一个数据项时的起始时延
+                1, //两项数据之间的间隔时间
+                TimeUnit.SECONDS);//时间单位
 
         DisposableObserver<Long> disposableObserver = new DisposableObserver<Long>() {
             @Override

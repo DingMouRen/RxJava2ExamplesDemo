@@ -128,7 +128,7 @@ public class ApiController {
         if (firstDoorPwd == 1234){
             bean =  new Nest1Bean("获取到第二道门得密码",1234);
         }else {
-            bean =  new Nest1Bean("没有获取到第二道门得密码",0);
+            bean =  new Nest1Bean("获取到错误的第二道门密码",0);
         }
         return ResultUtil.success(bean);
     }

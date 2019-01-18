@@ -17,11 +17,11 @@ public class HttpManager {
 
     private volatile static HttpManager sHttpManager = null;
 
-    private static final int READ_TIME_OUT = 10;
+    private static final int READ_TIME_OUT = 5;
 
-    private static final int CONNECT_TIME_OUT = 10;
+    private static final int CONNECT_TIME_OUT = 3;
 
-    private static final int WRITE_TIME_OUT = 10;
+    private static final int WRITE_TIME_OUT = 5;
 
     private static final String BASE_URL_1 = "http://localhost:8080/";
 
@@ -45,7 +45,7 @@ public class HttpManager {
 
     /*Retrofit的构建者对象*/
     private static Retrofit.Builder sRetrofitBuilder = new Retrofit.Builder()
-            .baseUrl(BASE_URL_3)
+            .baseUrl(BASE_URL_4)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create());
 
@@ -77,6 +77,13 @@ public class HttpManager {
         return retrofit.create(serviceClass);
     }
 
+    /**
+     * 用于下载文件
+     * @param serviceClass
+     * @param interceptor
+     * @param <S>
+     * @return
+     */
     public static <S> S createService(Class<S> serviceClass, ProgressInterceptor interceptor){
         OkHttpClient okHttpClient = sOkHttpBuilder.addInterceptor(interceptor).build();
         Retrofit retrofit = sRetrofitBuilder.client(okHttpClient).build();

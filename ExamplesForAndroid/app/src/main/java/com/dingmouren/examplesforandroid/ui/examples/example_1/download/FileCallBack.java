@@ -30,16 +30,40 @@ public abstract class FileCallBack<T> {
         EventBus.getDefault().register(this);
     }
 
-    public abstract void onSuccess(T t);
-
-    public abstract void progress(long progress, long total);
-
+    /**
+     * 开始下载文件
+     * @param disposable
+     */
     public abstract void onStart(Disposable disposable);
 
+    /**
+     * 成功返回，对应onNext函数
+     * @param t
+     */
+    public abstract void onSuccess(T t);
+
+    /**
+     * 文件下载进度
+     * @param progress
+     * @param total
+     */
+    public abstract void progress(long progress, long total);
+
+    /**
+     * 文件下载完成
+     */
     public abstract void onCompleted();
 
+    /**
+     * 文件下载出错
+     * @param e
+     */
     public abstract void onError(Throwable e);
 
+    /**
+     * 保存文件
+     * @param body
+     */
     public void saveFile(ResponseBody body) {
         InputStream is = null;
         byte[] buf = new byte[2048];
@@ -73,6 +97,9 @@ public abstract class FileCallBack<T> {
         }
     }
 
+    /**
+     * 注销EventBus
+     */
     private void unsubscribe() {
         EventBus.getDefault().unregister(this);
     }

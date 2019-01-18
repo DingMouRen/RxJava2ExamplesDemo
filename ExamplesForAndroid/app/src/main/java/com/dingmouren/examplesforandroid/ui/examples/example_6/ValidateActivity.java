@@ -67,7 +67,7 @@ public class ValidateActivity extends BaseActivity {
         mCompositeDisposable = new CompositeDisposable();
         mAccoountPublishSubject = PublishSubject.create();
         mPwdPublishSubject = PublishSubject.create();
-
+        /*可以接受多个Observable和一个函数作为参数。当其中的任意一个Observable发射数据后，会去获取其他的Observable最后一次发射的数据，回调到函数中*/
         Observable<Boolean> observable = Observable.combineLatest(mAccoountPublishSubject, mPwdPublishSubject,
                 new BiFunction<String, String, Boolean>() {
                     @Override

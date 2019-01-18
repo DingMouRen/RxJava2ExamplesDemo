@@ -156,7 +156,8 @@ public class SearchActivity extends BaseActivity {
                     public boolean test(String s) throws Exception {
                         return s.length() > 0;
                     }
-                }).switchMap(new Function<String, ObservableSource<MyResponse<String>>>() {//switchMap操作符会保存最新的Observable产生的结果而舍弃旧的结果，当上一个任务尚未完成时，就开始下一个任务的话，上一个任务就会被取消掉
+                 //switchMap操作符会保存最新的Observable产生的结果而舍弃旧的结果，当上一个任务尚未完成时，就开始下一个任务的话，上一个任务就会被取消掉
+                }).switchMap(new Function<String, ObservableSource<MyResponse<String>>>() {
             @Override
             public ObservableSource<MyResponse<String >> apply(String s) throws Exception {
                 return HttpManager.createService(Api.class).search(s).subscribeOn(Schedulers.io());

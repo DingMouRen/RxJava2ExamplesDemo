@@ -9,6 +9,7 @@ import okhttp3.Response;
 
 /**
  * Created by air on 2016/12/5.
+ * 对于返回的响应进行处理的拦截器
  */
 public class ProgressInterceptor implements Interceptor {
 

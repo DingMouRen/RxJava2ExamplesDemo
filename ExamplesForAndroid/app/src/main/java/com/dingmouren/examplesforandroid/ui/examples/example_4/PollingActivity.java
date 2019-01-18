@@ -90,10 +90,17 @@ public class PollingActivity extends BaseActivity {
 
     /**
      * 固定时间间隔的轮询
+     * intervalRange:
+     * start：发送数据的起始值，为Long型。
+     * count：总共发送多少项数据。
+     * initialDelay：发送第一个数据项时的起始时延。
+     * period：两项数据之间的间隔时间。
+     * TimeUnit：时间单位。
      */
     private void startFixPolling() {
 
-        Observable<MyResponse<String>> observableFix = Observable.intervalRange(0,5,0,1000, TimeUnit.MILLISECONDS)
+        Observable<MyResponse<String>> observableFix
+                = Observable.intervalRange(0,5,0,1000, TimeUnit.MILLISECONDS)//每秒请求一次，发出5次请求
                 .take(5)
                 .flatMap(new Function<Long, ObservableSource<MyResponse<String>>>() {
                     @Override

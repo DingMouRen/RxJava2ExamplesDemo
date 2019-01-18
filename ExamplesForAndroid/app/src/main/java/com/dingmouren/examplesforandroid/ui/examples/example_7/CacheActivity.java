@@ -150,16 +150,17 @@ public class CacheActivity extends BaseActivity {
         mProgressBar.setVisibility(View.VISIBLE);
 
         Observable<MyResponse<List<CacheToNetData>>> observable =
-                getNetData(delayTimeNet).publish(new Function<Observable<MyResponse<List<CacheToNetData>>>, ObservableSource<MyResponse<List<CacheToNetData>>>>() {
+                getNetData(delayTimeNet).publish(new Function<Observable<MyResponse<List<CacheToNetData>>>,
+                        ObservableSource<MyResponse<List<CacheToNetData>>>>() {
                     @Override
                     public ObservableSource<MyResponse<List<CacheToNetData>>> apply(Observable<MyResponse<List<CacheToNetData>>> netResponseObservable) throws Exception {
 
-                        return Observable.merge(getLocalCacheData(delayTimeLocal),netResponseObservable )
+                        return Observable.merge(getLocalCacheData(delayTimeLocal), netResponseObservable)
                                 .takeUntil(new Predicate<MyResponse<List<CacheToNetData>>>() {
                                     @Override
                                     public boolean test(MyResponse<List<CacheToNetData>> listMyResponse) throws Exception {
-                                        mainThreadTextLog("获取到的数据类型:"+listMyResponse.msg);
-                                        return listMyResponse.msg.equals("成功");
+                                        mainThreadTextLog("获取到的数据类型:" + listMyResponse.msg);
+                                        return listMyResponse.msg.equals("成功");//如果网络请求先于本地缓存数据的话，getLocalCacheData就不再执行了
                                     }
                                 });
                     }

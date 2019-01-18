@@ -18,6 +18,7 @@ import com.dingmouren.examplesforandroid.util.JsonUtils;
 import com.google.gson.Gson;
 
 import java.net.ConnectException;
+import java.net.SocketTimeoutException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
@@ -84,8 +85,9 @@ public class ExceptionRetryActivity extends BaseActivity {
     }
 
     private void retryDemo() {
-        Observable<MyResponse<String>> observable = HttpManager.createService(Api.class).retry()
-                .retryWhen(new Function<Observable<Throwable>, ObservableSource<?>>() {
+        Observable<MyResponse<String>> observable
+                = HttpManager.createService(Api.class).retry()
+                .retryWhen(new Function<Observable<Throwable>, ObservableSource<?>>() {//retryWhen操作符可以实现重新订阅，由onError事件来触发
             private int mRetryCount;//记录重试的次数
             @Override
             public ObservableSource<?> apply(Observable<Throwable> throwableObservable) throws Exception {
@@ -94,15 +96,16 @@ public class ExceptionRetryActivity extends BaseActivity {
                     public ObservableSource<?> apply(Throwable throwable) throws Exception {
 
                         long waitTime = 0;//等待时间
-                        if (throwable instanceof ConnectException){
-                            mainThreadTextChange("ConnectException异常\n");
-                            waitTime = 2000;
+                        if (throwable instanceof SocketTimeoutException){
+                            mainThreadTextChange("SocketTimeoutException异常\n");
+                            waitTime = 1000;
+                            mRetryCount++;
                         }
-                        mRetryCount++;
-                        if (waitTime > 0){
-                            mainThreadTextChange("2秒后重新发起请求\n");
+
+                        if (waitTime > 0 && mRetryCount < 4){
+                            mainThreadTextChange("1秒后重新发起请求\n");
                         }
-                        return waitTime > 0 && mRetryCount <= 4 ?
+                        return waitTime > 0 && mRetryCount < 4 ?
                                 Observable.timer(waitTime,TimeUnit.MILLISECONDS):
                                 Observable.error(throwable);
                     }

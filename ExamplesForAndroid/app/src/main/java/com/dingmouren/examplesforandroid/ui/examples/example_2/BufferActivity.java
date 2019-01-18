@@ -65,6 +65,8 @@ public class BufferActivity extends BaseActivity {
         mTemperatureHandler = new TemperatureHandler();
         mTemperatureHandler.sendEmptyMessage(0);
 
+        mCompositeDisposable = new CompositeDisposable();//用于管理订阅与解除订阅
+
     }
 
 
@@ -123,7 +125,9 @@ public class BufferActivity extends BaseActivity {
      * rxjava处理
      */
     private void rxjavaCompose() {
+
         mPublishSubject = PublishSubject.create();
+
         DisposableObserver<List<Double>> disposableObserver = new DisposableObserver<List<Double>>() {
             @Override
             public void onNext(List<Double> temperatureList) {
@@ -139,6 +143,7 @@ public class BufferActivity extends BaseActivity {
                 Log.e(mActivity.getClass().getSimpleName(),"更新平均温度："+resultAvera);
 
                 final double finalResultAvera = resultAvera;
+                //TextView滚动到最低边
                 mTvAveraTemperature.post(new Runnable() {
                     @Override
                     public void run() {
@@ -163,9 +168,10 @@ public class BufferActivity extends BaseActivity {
 
             }
         };
+        mPublishSubject.buffer(3000, TimeUnit.MILLISECONDS)//将3秒时间内的所有数据以集合的方式发射出去
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(disposableObserver);
 
-        mPublishSubject.buffer(3000, TimeUnit.MILLISECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe(disposableObserver);
-        mCompositeDisposable = new CompositeDisposable();//用于管理订阅与解除订阅
         mCompositeDisposable.add(disposableObserver);
     }
 

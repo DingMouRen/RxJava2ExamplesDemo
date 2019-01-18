@@ -13,7 +13,7 @@ import okio.Okio;
 import okio.Source;
 
 /**
- *
+ * 自定义responsebody对返回进度进行处理
  * Created by miya95 on 2016/12/5.
  */
 public class ProgressResponseBody extends ResponseBody {
@@ -32,6 +32,10 @@ public class ProgressResponseBody extends ResponseBody {
         return responseBody.contentType();
     }
 
+    /**
+     * 返回文件的总大小
+     * @return
+     */
     @Override
     public long contentLength() {
         return responseBody.contentLength();
@@ -48,13 +52,13 @@ public class ProgressResponseBody extends ResponseBody {
 
     private Source source(Source source) {
         return new ForwardingSource(source) {
-            long bytesReaded = 0;
+            long bytesReaded = 0;//记录当前文件已经下载的数据大小
             @Override
             public long read(Buffer sink, long byteCount) throws IOException {
                 long bytesRead = super.read(sink, byteCount);
                 bytesReaded += bytesRead == -1 ? 0 : bytesRead;
-                //实时发送当前已读取(上传/下载)的字节
-                EventBus.getDefault().post(new FileDownloadEvent(contentLength(),bytesReaded));
+
+                EventBus.getDefault().post(new FileDownloadEvent(contentLength(),bytesReaded));//实时发送当前已读取(上传/下载)的字节
                 return bytesRead;
             }
         };
